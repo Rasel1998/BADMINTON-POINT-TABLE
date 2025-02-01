@@ -130,32 +130,46 @@
             <td>0</td>
         </tr>
     </table>
-    <h2 style="color: red;">Live Match</h2>
-<table>
-    <tr>
-        <th>Match</th>
-        <th>Teams</th>
-        <th>Score</th>
-        <th>Overs</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Team X vs Team Y</td>
-        <td>Team X: 145/3</td>
-        <td>15.2 Overs</td>
-    </tr>
-</table>
-<h2>Upcoming Match</h2>
-<table>
+   <h2 style="color: red;">Live Matches</h2>
+<table id="live-matches">
     <tr>
         <th>Match</th>
         <th>Teams</th>
         <th>Time</th>
+        <th>Status</th>
     </tr>
-    <tr>
-        <td>1</td>
-        <td>Team X vs Team Y</td>
-        <td>02 Feb 2025, 7:00 PM</td>
+</table>
+
+<script>
+    async function fetchMatches() {
+        const sheetURL = "https://docs.google.com/spreadsheets/d/1XgK1RBJZVh4LBJ9dO25gyhriJBBRRaDIyrXekQoyJV0/csv?usp=sharing";
+        const response = await fetch(sheetURL);
+        const data = await response.text();
+        const rows = data.split("\n").slice(1);
+
+        let html = "";
+        const now = new Date();
+
+        rows.forEach(row => {
+            const [match, teamA, teamB, time, status] = row.split(",");
+            const matchTime = new Date(time);
+
+            if (matchTime <= now && status.includes("Upcoming")) {
+                html += `<tr>
+                            <td>${match}</td>
+                            <td>${teamA} vs ${teamB}</td>
+                            <td>${time}</td>
+                            <td style="color: green; font-weight: bold;">Live</td>
+                        </tr>`;
+            }
+        });
+
+        document.getElementById("live-matches").innerHTML += html;
+    }
+
+    fetchMatches();
+    setInterval(fetchMatches, 60000);
+</script>
     </tr>
 </table>
     </tr>
