@@ -142,7 +142,7 @@
 
 <script>
     async function fetchMatches() {
-        const sheetURL = "https://docs.google.com/spreadsheets/d/1XgK1RBJZVh4LBJ9dO25gyhriJBBRRaDIyrXekQoyJV0/csv?usp=sharing";
+        const sheetURL = "https://docs.google.com/spreadsheets/d/1XgK1RBJZVh4LBJ9dO25gyhriJBBRRaDIyrXekQoyJV0/tq?tqx=out:csv";
         const response = await fetch(sheetURL);
         const data = await response.text();
         const rows = data.split("\n").slice(1);
