@@ -139,50 +139,6 @@
         <th>Status</th>
     </tr>
 </table>
-
-<script>
-    async function fetchMatches() {
-        const sheetURL = "https://docs.google.com/spreadsheets/d/1XgK1RBJZVh4LBJ9dO25gyhriJBBRRaDIyrXekQoyJV0/gviz/tq?tqx=out:csv";
-        try {
-            const response = await fetch(sheetURL);
-            if (!response.ok) throw new Error("Sheet Loading Error");
-            const data = await response.text();
-            const rows = data.split("\n").slice(1);
-
-            let html = "";
-            const now = new Date();
-
-            rows.forEach(row => {
-                const columns = row.split(",");
-                if (columns.length < 5) return;
-
-                const match = columns[0];
-                const teamA = columns[1];
-                const teamB = columns[2];
-                const time = columns[3];
-                const status = columns[4].trim();
-
-                const matchTime = new Date(time);
-
-                if (matchTime <= now && status.includes("Upcoming")) {
-                    html += `<tr>
-                                <td>${match}</td>
-                                <td>${teamA} vs ${teamB}</td>
-                                <td>${time}</td>
-                                <td style="color: green; font-weight: bold;">Live</td>
-                            </tr>`;
-                }
-            });
-
-            document.getElementById("live-matches").innerHTML += html;
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        }
-    }
-
-    fetchMatches();
-    setInterval(fetchMatches, 60000);
-</script>
     </tr>
     </table>
     <p>Last updated: <b>01 Feb 2025</b></p>
