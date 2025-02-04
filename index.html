@@ -36,24 +36,38 @@
             background: #007bff;
             color: white;
         }
+        @media screen and (max-width: 768px) {
+            table {
+                font-size: 14px;
+            }
+            th, td {
+                padding: 6px;
+            }
+        }
+
+        /* Rules Button */
         .rules-button {
-            margin: 20px 0;
-            padding: 10px 15px;
-            font-size: 16px;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            padding: 8px 12px;
+            font-size: 14px;
             background: #007bff;
             color: white;
             border: none;
             cursor: pointer;
             border-radius: 5px;
+            z-index: 1000;
         }
         .rules-button:hover {
             background: #0056b3;
         }
+
         /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
-            z-index: 1;
+            z-index: 1001;
             left: 0;
             top: 0;
             width: 100%;
@@ -66,102 +80,42 @@
             padding: 20px;
             border: 1px solid #888;
             width: 60%;
-            border-radius: 5px;
             text-align: left;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
         }
         .close {
             color: red;
             float: right;
-            font-size: 28px;
-            font-weight: bold;
+            font-size: 24px;
             cursor: pointer;
         }
         .close:hover {
             color: darkred;
         }
-        .rules-container ol {
-            padding-left: 20px;
-        }
-        .rules-container li {
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
     </style>
 </head>
 <body>
 
-    <h2>UNITEX BADMINTON TOURNAMENT-2025</h2>
-    <h2>POINTS TABLE</h2>
-
-    <div class="table-container">
-        <table id="pointsTable">
-            <thead>
-                <tr>
-                    <th>S.N</th>
-                    <th>Team</th>
-                    <th>Matches</th>
-                    <th>Wins</th>
-                    <th>Losses</th>
-                    <th>Points</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>1</td><td>MUSTAFIZUR(DIR) + SHAHIN(P)</td><td>2</td><td>2</td><td>0</td><td>4</td></tr>
-                <tr><td>2</td><td>MUSHARRAF (E) + SHAHIN(QC)</td><td>2</td><td>0</td><td>2</td><td>0</td></tr>
-                <tr><td>3</td><td>SHAKIB (P) + JAKARIA (D)</td><td>2</td><td>2</td><td>0</td><td>4</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- Button to open rules modal -->
+    <!-- Rules Button -->
     <button class="rules-button" onclick="openRules()">Badminton Rules</button>
 
-    <h2 style="color: red;">Upcoming Matches 04/02/2025</h2>
-    <div class="table-container">
-        <table>
-            <tr><th>Match No 10</th><th>SHAHIDUL (M) + ABDUL AWAL (M) V/S SUMON (R) + MIRAZ (R)</th><th>8:00 PM</th><th>VENUE UCML RECYCLING FIELD</th></tr>
-        </table>
-    </div>
-
-    <h2 style="color: red;">Match Results (03/02/2025)</h2>
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Match</th>
-                    <th>Result</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>RAJU (G) + SAIFUL ISLAM (P) vs MUSHARRAF (E) + SHAHIN(QC)</td>
-                    <td>Winner: RAJU (G) + SAIFUL ISLAM (P)</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <p>Last updated: <b>04 Feb 2025</b></p>
-
-    <!-- Modal for Rules -->
+    <!-- Rules Modal -->
     <div id="rulesModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeRules()">&times;</span>
             <h2>Badminton Rules</h2>
-            <div class="rules-container">
-                <ol>
-                    <li>খেলার শুরুতে টসে বিজয়ী দল কোর্ট বা প্রথম সার্ভিস বেছে নিতে পারবে।</li>
-                    <li>একক ও দ্বৈত খেলায় ১৫ পয়েন্টের মোট তিনটি গেম অনুষ্ঠিত হয়।</li>
-                    <li>প্রথম গেমে জয়ী দল পরবর্তী গেমের শুরুতে সার্ভ করবে।</li>
-                    <li>পয়েন্ট সমান হলে (ডিউজ) যেকোনো দলকে ২ পয়েন্টের ব্যবধানে জয়ী হতে হবে (সর্বোচ্চ ৩০ পয়েন্ট পর্যন্ত)।</li>
-                    <li>সার্ভিস করার সময় শাটল নেটে স্পর্শ করলে তা *ফল্ট* হিসেবে গণ্য হবে।</li>
-                    <li>ম্যাচে ১১ পয়েন্ট হলে ৬০ সেকেন্ড ও গেম শেষে ২ মিনিটের বিরতি নেওয়া যাবে।</li>
-                    <li>সার্ভিস করার সময় খেলোয়াড়ের দুই পা মাটিতে থাকতে হবে।</li>
-                    <li>কেউ খেলার সময় নেট স্পর্শ করতে পারবে না।</li>
-                    <li>প্রতি গেম শেষে কোর্ট বদল করতে হবে।</li>
-                </ol>
-            </div>
+            <ul>
+                <li>১) খেলার শুরুতে টসে বিজয়ী দল বা খেলোয়াড় পছন্দমতো কোর্ট নিতে পারবে বা প্রথমে সার্ভিস করতে পারবে।</li>
+                <li>২) একক ও দ্বৈত খেলায় ১৫ পয়েন্টের মোট তিনটি গেম অনুষ্ঠিত হয়।</li>
+                <li>৩) প্রথম গেমে জয়ী দল পরবর্তী গেমের শুরুতে সার্ভ করবে।</li>
+                <li>৪) দুইজনের পয়েন্ট সমান হলে "ডিউজ" বলা হয়। দুই পয়েন্টের ব্যবধানে জয় নিশ্চিত করতে হবে।</li>
+                <li>৫) সার্ভিস করার সময় শাটল নেটে স্পর্শ করে প্রতিপক্ষের কোর্টে গেলে তা ফাউল হবে।</li>
+                <li>৬) ম্যাচে পয়েন্ট ১১ হলে ৬০ সেকেন্ডের বিরতি নেওয়া যায়, গেম শেষে ২ মিনিটের বিরতি নেওয়া যায়।</li>
+                <li>৭) সার্ভিং পক্ষ র‍্যালি জিতলে সার্ভার কোর্ট বদল করে পুনরায় সার্ভিস করবে।</li>
+                <li>৮) সার্ভ করার সময় সার্ভারের দুই পা মাটিতে স্পর্শ করতে হবে।</li>
+                <li>৯) নেট অতিক্রম করে কেউ শাটলে আঘাত করতে পারবে না বা নেট স্পর্শ করতে পারবে না।</li>
+                <li>১০) প্রতি গেম শেষে কোর্ট বদল করতে হবে।</li>
+            </ul>
         </div>
     </div>
 
@@ -169,31 +123,9 @@
         function openRules() {
             document.getElementById("rulesModal").style.display = "block";
         }
-
         function closeRules() {
             document.getElementById("rulesModal").style.display = "none";
         }
-
-        function sortTable() {
-            let table = document.getElementById("pointsTable");
-            let tbody = table.getElementsByTagName("tbody")[0];
-            let rows = Array.from(tbody.getElementsByTagName("tr"));
-
-            rows.sort((a, b) => {
-                let pointsA = parseInt(a.cells[5].innerText);
-                let pointsB = parseInt(b.cells[5].innerText);
-                return pointsB - pointsA;
-            });
-
-            tbody.innerHTML = "";
-            rows.forEach(row => tbody.appendChild(row));
-
-            rows.forEach((row, index) => {
-                row.cells[0].innerText = index + 1;
-            });
-        }
-
-        sortTable();
     </script>
 
 </body>
