@@ -16,37 +16,6 @@
         h2 {
             color: #333;
         }
-        .table-container {
-            width: 100%;
-            overflow-x: auto;
-        }
-        table {
-            width: 90%;
-            margin: auto;
-            border-collapse: collapse;
-            background: #fff;
-            min-width: 600px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-            white-space: nowrap;
-        }
-        th {
-            background: #007bff;
-            color: white;
-        }
-        @media screen and (max-width: 768px) {
-            table {
-                font-size: 14px;
-            }
-            th, td {
-                padding: 6px;
-            }
-        }
-
-        /* Rules Button */
         .rules-btn {
             position: absolute;
             top: 10px;
@@ -70,15 +39,18 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
+            overflow: auto;
         }
         .modal-content {
             background-color: white;
             margin: 10% auto;
             padding: 20px;
-            width: 80%;
+            width: 90%;
             max-width: 500px;
             border-radius: 8px;
             text-align: left;
+            max-height: 80vh;
+            overflow-y: auto;
         }
         .close-btn {
             float: right;
