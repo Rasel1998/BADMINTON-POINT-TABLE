@@ -11,6 +11,7 @@
             background-color: #f4f4f4;
             margin: 0;
             padding: 10px;
+            position: relative;
         }
         h2 {
             color: #333;
@@ -46,28 +47,24 @@
         }
 
         /* Rules Button */
-        .rules-button {
-            position: fixed;
+        .rules-btn {
+            position: absolute;
             top: 10px;
             left: 10px;
-            padding: 8px 12px;
-            font-size: 14px;
             background: #007bff;
             color: white;
             border: none;
+            padding: 10px 15px;
             cursor: pointer;
             border-radius: 5px;
-            z-index: 1000;
-        }
-        .rules-button:hover {
-            background: #0056b3;
+            font-size: 14px;
         }
 
         /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
-            z-index: 1001;
+            z-index: 1000;
             left: 0;
             top: 0;
             width: 100%;
@@ -78,54 +75,96 @@
             background-color: white;
             margin: 10% auto;
             padding: 20px;
-            border: 1px solid #888;
-            width: 60%;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
             text-align: left;
-            border-radius: 10px;
         }
-        .close {
-            color: red;
+        .close-btn {
             float: right;
-            font-size: 24px;
             cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
         }
-        .close:hover {
-            color: darkred;
-        }
+
     </style>
 </head>
 <body>
 
-    <!-- Rules Button -->
-    <button class="rules-button" onclick="openRules()">Badminton Rules</button>
+    <!-- Badminton Rules Button -->
+    <button class="rules-btn" onclick="showRules()">Badminton Rules</button>
 
-    <!-- Rules Modal -->
+    <!-- Modal for Rules -->
     <div id="rulesModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeRules()">&times;</span>
+            <span class="close-btn" onclick="closeRules()">&times;</span>
             <h2>Badminton Rules</h2>
-            <ul>
-                <li>১) খেলার শুরুতে টসে বিজয়ী দল বা খেলোয়াড় পছন্দমতো কোর্ট নিতে পারবে বা প্রথমে সার্ভিস করতে পারবে।</li>
-                <li>২) একক ও দ্বৈত খেলায় ১৫ পয়েন্টের মোট তিনটি গেম অনুষ্ঠিত হয়।</li>
-                <li>৩) প্রথম গেমে জয়ী দল পরবর্তী গেমের শুরুতে সার্ভ করবে।</li>
-                <li>৪) দুইজনের পয়েন্ট সমান হলে "ডিউজ" বলা হয়। দুই পয়েন্টের ব্যবধানে জয় নিশ্চিত করতে হবে।</li>
-                <li>৫) সার্ভিস করার সময় শাটল নেটে স্পর্শ করে প্রতিপক্ষের কোর্টে গেলে তা ফাউল হবে।</li>
-                <li>৬) ম্যাচে পয়েন্ট ১১ হলে ৬০ সেকেন্ডের বিরতি নেওয়া যায়, গেম শেষে ২ মিনিটের বিরতি নেওয়া যায়।</li>
-                <li>৭) সার্ভিং পক্ষ র‍্যালি জিতলে সার্ভার কোর্ট বদল করে পুনরায় সার্ভিস করবে।</li>
-                <li>৮) সার্ভ করার সময় সার্ভারের দুই পা মাটিতে স্পর্শ করতে হবে।</li>
-                <li>৯) নেট অতিক্রম করে কেউ শাটলে আঘাত করতে পারবে না বা নেট স্পর্শ করতে পারবে না।</li>
-                <li>১০) প্রতি গেম শেষে কোর্ট বদল করতে হবে।</li>
-            </ul>
+            <p>১) খেলার শুরুতে টসে বিজয়ী দল বা খেলোয়াড় পছন্দমতো কোর্ট নিতে পারবে বা প্রথমে সার্ভিস করতে পারবে।</p>
+            <p>২) একক ও দ্বৈত খেলায় 15 পয়েন্টের মোট তিনটি গেম অনুষ্ঠিত হয়।</p>
+            <p>৩) প্রথম গেমে জয়ী দল পরবর্তী গেমের শুরুতে সার্ভ করবে।</p>
+            <p>৪) দুইজনের পয়েন্ট সমান হওয়ার অবস্থাকে ডিউজ বলা হয়।</p>
+            <p>৫) সার্ভিস করার সময় শাটল নেটে স্পর্শ করে প্রতিপক্ষের কোর্টে পৌছালে সার্ভিসটি ভুল হিসেবে গণ্য হবে।</p>
+            <p>৬) ম্যাচে পয়েন্ট ১১ তে পৌছালে ৬০ সেকেন্ডের বিরতি নেওয়া যায়।</p>
+            <p>৭) একক ও দ্বৈত উভয় খেলাতেই কোনো পয়েন্ট না হওয়া পর্যন্ত খেলোয়াড়েরা কেউই নিজেদের সার্ভিস কোর্ট বদল করতে পারবে না।</p>
+            <p>৮) দ্বৈত খেলায় সার্ভিসের নিয়ম অনুযায়ী ডান ও বাম কোর্ট থেকে সার্ভ করা হবে।</p>
+            <p>৯) সার্ভিস করার সময় সার্ভারের দুই পা অবশ্যই মাটিতে স্পর্শ করা অবস্থায় থাকতে হবে।</p>
+            <p>১০) নেট অতিক্রম করে কোনো খেলোয়াড় শাটলে আঘাত করতে পারবে না এবং কেউ নেট স্পর্শ করতে পারবে না।</p>
+            <p>১১) প্রতি গেম শেষে কোর্ট বদল করতে হবে।</p>
         </div>
     </div>
 
+    <h2>UNITEX BADMINTON TOURNAMENT-2025</h2>
+    <h2>POINTS TABLE</h2>
+
+    <div class="table-container">
+        <table id="pointsTable">
+            <thead>
+                <tr>
+                    <th>S.N</th>
+                    <th>Team</th>
+                    <th>Matches</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>MUSTAFIZUR(DIR) + SHAHIN(P)</td><td>2</td><td>2</td><td>0</td><td>4</td></tr>
+                <tr><td>2</td><td>MUSHARRAF (E) + SHAHIN(QC)</td><td>2</td><td>0</td><td>2</td><td>0</td></tr>
+                <tr><td>3</td><td>SHAKIB (P) + JAKARIA (D)</td><td>2</td><td>2</td><td>0</td><td>4</td></tr>
+            </tbody>
+        </table>
+    </div>
+
     <script>
-        function openRules() {
+        function showRules() {
             document.getElementById("rulesModal").style.display = "block";
         }
+
         function closeRules() {
             document.getElementById("rulesModal").style.display = "none";
         }
+
+        function sortTable() {
+            let table = document.getElementById("pointsTable");
+            let tbody = table.getElementsByTagName("tbody")[0];
+            let rows = Array.from(tbody.getElementsByTagName("tr"));
+
+            rows.sort((a, b) => {
+                let pointsA = parseInt(a.cells[5].innerText);
+                let pointsB = parseInt(b.cells[5].innerText);
+                return pointsB - pointsA;
+            });
+
+            tbody.innerHTML = "";
+            rows.forEach(row => tbody.appendChild(row));
+
+            rows.forEach((row, index) => {
+                row.cells[0].innerText = index + 1;
+            });
+        }
+
+        sortTable();
     </script>
 
 </body>
