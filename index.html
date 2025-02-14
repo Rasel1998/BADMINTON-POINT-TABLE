@@ -24,27 +24,25 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 12px 0;
+            padding: 15px 0;
             font-size: 18px;
             font-weight: bold;
             text-align: center;
             z-index: 1000;
-            color: white;
-            background: linear-gradient(45deg, #ff5733, #ffcc00, #ff5733);
-            animation: blink 1.5s infinite alternate, moveText 10s linear infinite;
+            background: linear-gradient(45deg, #ff5733, #ffcc00);
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            color: white;
         }
 
-        /* 🔄 Text Animation */
-        @keyframes moveText {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+        /* ⬆⬇ Notice Text Up-Down Animation */
+        #notice-text {
+            display: inline-block;
+            animation: upDown 1s infinite alternate;
         }
 
-        /* ✨ Blinking Effect */
-        @keyframes blink {
-            0% { opacity: 1; }
-            100% { opacity: 0.7; }
+        @keyframes upDown {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(5px); }
         }
 
         /* Table Styling */
@@ -86,9 +84,9 @@
 </head>
 <body>
 
-    <!-- 🔥 Stylish Notice Bar -->
+    <!-- 🔥 Fixed Notice Bar with Up-Down Text -->
     <div id="notice-container">
-        📢 জরুরি নোটিশ: আগামী ২০ ফেব্রুয়ারি থেকে নতুন আপডেট আসছে!
+        <span id="notice-text">📢 জরুরি নোটিশ: আগামী ২০ ফেব্রুয়ারি থেকে নতুন আপডেট আসছে! ⏳</span>
     </div>
 
     <!-- Main Content -->
