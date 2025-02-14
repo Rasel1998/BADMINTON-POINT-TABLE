@@ -13,184 +13,121 @@
             padding: 10px;
             position: relative;
         }
+
         h2 {
             color: #333;
         }
-        .table-container {
-            width: 100%;
-            overflow-x: auto;
-        }
-        table {
-            width: 90%;
-            margin: auto;
-            border-collapse: collapse;
-            background: #fff;
-            min-width: 600px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-            white-space: nowrap;
-        }
-        th {
-            background: #007bff;
-            color: white;
-        }
-        @media screen and (max-width: 768px) {
-            table {
-                font-size: 14px;
-            }
-            th, td {
-                padding: 6px;
-            }
-        }
 
-        /* Badminton Rules Button */
-        .rules-btn {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
+        /* Notice Bar */
+        #notice-container {
             position: fixed;
-            z-index: 1000;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            overflow: auto;
-        }
-        .modal-content {
-            background-color: white;
-            margin: 10% auto;
-            padding: 20px;
-            width: 90%;
-            max-width: 500px;
-            border-radius: 8px;
-            text-align: left;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-        .close-btn {
-            float: right;
-            cursor: pointer;
-            font-size: 20px;
+            background-color: #ffcc00;
+            color: black;
+            font-size: 18px;
             font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        /* Notice Animation */
+        @keyframes slideUpDown {
+            0% { transform: translateY(-100%); }
+            50% { transform: translateY(0); }
+            100% { transform: translateY(-100%); }
+        }
+
+        .notice-text {
+            display: inline-block;
+            animation: slideUpDown 5s infinite linear;
+        }
+
+        /* Adjust content position */
+        .content {
+            margin-top: 60px; /* To avoid overlapping with fixed notice bar */
         }
     </style>
 </head>
 <body>
 
-    <!-- Badminton Rules Button -->
-    <button class="rules-btn" onclick="showRules()">Badminton Rules</button>
-    <h2>UNITEX BADMINTON TOURNAMENT-2025</h2>
-    <h2>POINTS TABLE</h2>
-
-    <div class="table-container">
-        <table id="pointsTable">
-            <thead>
-                <tr>
-                    <th>S.N</th>
-                    <th>Team</th>
-                    <th>Matches</th>
-                    <th>Wins</th>
-                    <th>Losses</th>
-                    <th>Points</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>1</td><td>MUSTAFIZUR(DIR) + SHAHIN(P)</td><td>6</td><td>5</td><td>1</td><td>10</td></tr>
-                <tr><td>2</td><td>MUSHARRAF (E) + SHAHIN(QC)</td><td>9</td><td>2</td><td>7</td><td>4</td></tr>
-                <tr><td>3</td><td>SHAKIB (P) + JAKARIA (D)</td><td>7</td><td>5</td><td>2</td><td>10</td></tr>
-                <tr><td>4</td><td>RAKIB (R) + SHANTA (E)</td><td>7</td><td>5</td><td>2</td><td>10</td></tr>
-                <tr><td>5</td><td>AMINUL (A) + BELAL (A)</td><td>6</td><td>2</td><td>4</td><td>4</td></tr>
-                <tr><td>6</td><td>KAWSER (S) + SAGOR(S)</td><td>3</td><td>2</td><td>1</td><td>4</td></tr>
-                <tr><td>7</td><td>MAMUN (E) + EKRAMUL (D)</td><td>7</td><td>1</td><td>6</td><td>2</td></tr>
-                <tr><td>8</td><td>SHAHIDUL (M) + OBAIDUL (P)</td><td>5</td><td>3</td><td>2</td><td>6</td></tr>
-                <tr><td>9</td><td>SUMON (R) + KALIPODO (R)</td><td>9</td><td>6</td><td>3</td><td>12</td></tr>
-                <tr><td>10</td><td>RAJU (G) + SAIFUL ISLAM (P)</td><td>8</td><td>5</td><td>3</td><td>10</td></tr>
-                <tr><td>11</td><td>ALIMUL (AC) + ABDUL AWAL (M)</td><td>9</td><td>2</td><td>7</td><td>4</td></tr>
-            </tbody>
-        </table>
+    <!-- Notice Bar -->
+    <div id="notice-container">
+        <span class="notice-text">📢 জরুরি নোটিশ: আগামী 15 ফেব্রুয়ারি থেকে সিডিয়োল অনুযায়ী খেলা শুরু হবে। !</span>
     </div>
 
-    <h2 style="color: red;">Upcoming Matches 15/02/2025</h2>
-    <div class="table-container">
-        <table>
-        REST 2 DAYS
-    </div>
+    <!-- Main Content -->
+    <div class="content">
+        <h2>UNITEX BADMINTON TOURNAMENT-2025</h2>
+        <h2>POINTS TABLE</h2>
 
-    <h2 style="color: red;">Match Results (12/02/2025)</h2>
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Match</th>
-                    <th>Result</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>MAMUN (E) + EKRAMUL (D) V/S SUMON (R) + KALIPODO (R) </td>
-                    <td>Winner: SUMON (R) + KALIPODO (R)</td>
-                </tr>
-                <tr>
-                    <td>SHAKIB (P) + JAKARIA (D) V/S RAKIB (R) + SHANTA (E)</td>
-                    <td>Winner:RAKIB (R) + SHANTA (E)</td>
-                </tr>
-                <tr>
-                    <td>MUSTAFIZUR(DIR) + SHAHIN(P) V/S SHAHIDUL (M) + OBAIDUL (P)</td>
-                    <td>Winner:MUSTAFIZUR(DIR) + SHAHIN(P)</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <p>Last updated: <b>13 Feb 2025</b></p>
-
-    <!-- Modal for Rules -->
-    <div id="rulesModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeRules()">&times;</span>
-        <h2>Badminton Rules</h2>
-            <p>১) খেলার শুরুতে টসে বিজয়ী দল বা খেলোয়াড় পছন্দমতো কোর্ট নিতে পারবে বা প্রথমে সার্ভিস করতে পারবে।প্রতিপক্ষ সার্ভ রিসিভ করার মাধ্যমে খেলা শুরু করবে।</p>
-            <p>২) একক ও দ্বৈত খেলায় 15 পয়েন্টের মোট তিনটি গেম অনুষ্ঠিত হয়।</p>
-            <p>৩) প্রথম গেমে জয়ী দল পরবর্তী গেমের শুরুতে সার্ভ করবে।</p>
-            <p>৪) দুইজনের পয়েন্ট সমান হওয়ার অবস্থাকে ডিউজ বলা হয়।এক্ষেত্রে যেকোনো এক দলকে দুই পয়েন্টের ব্যবধানে এগিয়ে থেকে খেলা শেষ করতে হবে এবং সর্বোচ্চ ৩০ পয়েন্টের মধ্যে গেম শেষ করতে হবে।
-</p>
-            <p>৫) সার্ভিস করার সময় শাটল নেটে স্পর্শ করে প্রতিপক্ষের কোর্টে পৌছালে সার্ভিসটি ভুল হিসেবে গণ্য হবে।</p>
-            <p>৬) ম্যাচে পয়েন্ট ১১ তে পৌছালে ৬০ সেকেন্ডের বিরতি নেওয়া যায়।একটি গেম শেষ হওয়ার পরে পরবর্তী গেমের শুরুতে ২ মিনিটের বিরতি নেওয়া যায়।
-</p>
-            <p>৭) একক ও দ্বৈত উভয় খেলাতেই কোনো পয়েন্ট না হওয়া পর্যন্ত খেলোয়াড়েরা কেউই নিজেদের সার্ভিস কোর্ট বদল করতে পারবে না।</p>
-            <p>৮) দ্বৈত খেলায় সার্ভিসের সময় ডানদিকের খেলোয়াড় কোনাকোনিভাবে বিপক্ষ কোর্টে সার্ভিস করবে। খেলায় স্কোর জোড় হলে ডানের সার্ভিস কোর্ট হতে সার্ভ করতে হবে আর বিজোড় হলে বামের সার্ভিস কোর্ট হতে সার্ভ করতে হবে। সার্ভিং পক্ষ র‍্যালি জিতলে তখন একই সার্ভার কোর্ট বদল করে পুনরায় সার্ভিস করবে।</p>
-            <p>৯) সার্ভিস করার সময় সার্ভারের দুই পা অবশ্যই মাটিতে স্পর্শ করা অবস্থায় থাকতে হবে।</p>
-            <p>১০)নেট অতিক্রম করে কোনো খেলোয়াড় শাটলে আঘাত করতে পারবে না এবং খেলা চলাকালে কেউ র‍্যাকেট বা শরীরের কোনো অংশ দিয়ে নেট স্পর্শ করতে পারবে না।
-</p>
-            <p>১১) প্রতি গেম শেষে কোর্ট বদল করতে হবে।</p>
+        <div class="table-container">
+            <table id="pointsTable">
+                <thead>
+                    <tr>
+                        <th>S.N</th>
+                        <th>Team</th>
+                        <th>Matches</th>
+                        <th>Wins</th>
+                        <th>Losses</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>MUSTAFIZUR(DIR) + SHAHIN(P)</td><td>6</td><td>5</td><td>1</td><td>10</td></tr>
+                    <tr><td>2</td><td>MUSHARRAF (E) + SHAHIN(QC)</td><td>9</td><td>2</td><td>7</td><td>4</td></tr>
+                    <tr><td>3</td><td>SHAKIB (P) + JAKARIA (D)</td><td>7</td><td>5</td><td>2</td><td>10</td></tr>
+                    <tr><td>4</td><td>RAKIB (R) + SHANTA (E)</td><td>7</td><td>5</td><td>2</td><td>10</td></tr>
+                    <tr><td>5</td><td>AMINUL (A) + BELAL (A)</td><td>6</td><td>2</td><td>4</td><td>4</td></tr>
+                    <tr><td>6</td><td>KAWSER (S) + SAGOR(S)</td><td>3</td><td>2</td><td>1</td><td>4</td></tr>
+                    <tr><td>7</td><td>MAMUN (E) + EKRAMUL (D)</td><td>7</td><td>1</td><td>6</td><td>2</td></tr>
+                    <tr><td>8</td><td>SHAHIDUL (M) + OBAIDUL (P)</td><td>5</td><td>3</td><td>2</td><td>6</td></tr>
+                    <tr><td>9</td><td>SUMON (R) + KALIPODO (R)</td><td>9</td><td>6</td><td>3</td><td>12</td></tr>
+                    <tr><td>10</td><td>RAJU (G) + SAIFUL ISLAM (P)</td><td>8</td><td>5</td><td>3</td><td>10</td></tr>
+                    <tr><td>11</td><td>ALIMUL (AC) + ABDUL AWAL (M)</td><td>9</td><td>2</td><td>7</td><td>4</td></tr>
+                </tbody>
+            </table>
         </div>
+
+        <h2 style="color: red;">Upcoming Matches 15/02/2025</h2>
+        <div class="table-container">
+            <table>
+            REST 2 DAYS
+        </div>
+
+        <h2 style="color: red;">Match Results (12/02/2025)</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Match</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>MAMUN (E) + EKRAMUL (D) V/S SUMON (R) + KALIPODO (R) </td>
+                        <td>Winner: SUMON (R) + KALIPODO (R)</td>
+                    </tr>
+                    <tr>
+                        <td>SHAKIB (P) + JAKARIA (D) V/S RAKIB (R) + SHANTA (E)</td>
+                        <td>Winner: RAKIB (R) + SHANTA (E)</td>
+                    </tr>
+                    <tr>
+                        <td>MUSTAFIZUR(DIR) + SHAHIN(P) V/S SHAHIDUL (M) + OBAIDUL (P)</td>
+                        <td>Winner: MUSTAFIZUR(DIR) + SHAHIN(P)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>Last updated: <b>13 Feb 2025</b></p>
     </div>
 
     <script>
-        function showRules() {
-            document.getElementById("rulesModal").style.display = "block";
-        }
-
-        function closeRules() {
-            document.getElementById("rulesModal").style.display = "none";
-        }
-
         function sortTable() {
             let table = document.getElementById("pointsTable");
             let tbody = table.getElementsByTagName("tbody")[0];
