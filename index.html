@@ -45,7 +45,7 @@
             100% { transform: translateY(5px); }
         }
 
-        /* Table Styling */
+        /* 📌 Table Responsive Fix */
         .table-container {
             width: 100%;
             overflow-x: auto;
@@ -53,8 +53,7 @@
         }
 
         table {
-            width: 90%;
-            margin: auto;
+            width: 100%;
             border-collapse: collapse;
             background: #fff;
             min-width: 600px;
@@ -72,24 +71,34 @@
             color: white;
         }
 
+        /* ✅ Mobile Responsive Fix */
         @media screen and (max-width: 768px) {
+            .table-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
             table {
+                min-width: 100%;
+                width: 100%;
                 font-size: 14px;
             }
+
             th, td {
                 padding: 6px;
+                white-space: normal; /* মোবাইলে কলামের text wrap হবে */
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- 🔥 Fixed Notice Bar with Up-Down Text -->
+    <!-- 🔥 Fixed Notice Bar -->
     <div id="notice-container">
         <span id="notice-text">📢 জরুরি নোটিশ: আগামী 15 ফেব্রুয়ারি থেকে সিড়িয়ল অনুযায়ী খেলা চলবে! ⏳</span>
     </div>
 
-    <!-- Main Content -->
+    <!-- 🏸 Main Content -->
     <div class="table-container">
         <h2>UNITEX BADMINTON TOURNAMENT-2025</h2>
         <h2>POINTS TABLE</h2>
@@ -121,7 +130,6 @@
     </div>
 
     <p>Last updated: <b>13 Feb 2025</b></p>
-
 
     <script>
         function sortTable() {
