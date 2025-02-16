@@ -18,14 +18,6 @@
             color: #333;
         }
 
-        /* লোগোর জন্য নতুন CSS */
-        .logo {
-            width: 150px; /* লোগোর আকার */
-            height: auto;
-            margin: 20px auto; /* সেন্টারে আনার জন্য */
-            display: block;
-        }
-
         /* 🔥 Stylish Notice Bar */
         #notice-container {
             position: fixed;
@@ -58,12 +50,19 @@
             width: 100%;
             overflow-x: auto;
             margin-top: 60px;
+            position: relative;
+            background-image: url('logo.png'); /* 🔥 লোগোর URL */
+            background-size: 250px; /* লোগোর সাইজ */
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.1; /* ✅ লোগো হালকা করে দেওয়া */
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            background: #fff;
+            background: rgba(255, 255, 255, 0.8); /* ব্যাকগ্রাউন্ড হালকা সাদা */
             min-width: 600px;
         }
 
@@ -105,9 +104,6 @@
     <div id="notice-container">
         <span id="notice-text">📢 জরুরি নোটিশ: ⏳</span>
     </div>
-
-    <!-- ✅ লোগো যুক্ত করা হলো -->
-    <img src="logo.png" alt="UNITEX Logo" class="logo">
 
     <!-- 🏸 Main Content -->
     <div class="table-container">
