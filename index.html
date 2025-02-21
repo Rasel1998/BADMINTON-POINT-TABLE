@@ -18,27 +18,11 @@
             margin-bottom: 5px;
         }
 
-        /* 🔥 Fixed Notice Bar */
-        #notice-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 10px 0;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            background: linear-gradient(45deg, #ff5733, #ffcc00);
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-            color: white;
-            z-index: 1000;
-        }
-
         /* 🏓 Table Container */
         .table-container {
             width: 100%;
             overflow-x: auto;
-            margin-top: 70px;
+            margin-top: 20px;
         }
 
         table {
@@ -58,21 +42,37 @@
         th {
             background: #007bff;
             color: white;
-            position: sticky;
-            top: 40px;
-            z-index: 999;
         }
 
-        /* ✅ Responsive Table */
-        @media screen and (max-width: 768px) {
-            .table-container {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
+        /* ✅ Fixed First Two Columns (S.N & Team) */
+        .table-container {
+            position: relative;
+        }
 
+        table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        thead tr th:first-child,
+        tbody tr td:first-child,
+        thead tr th:nth-child(2),
+        tbody tr td:nth-child(2) {
+            position: sticky;
+            left: 0;
+            background: #fff;
+            z-index: 2;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        thead tr th:first-child {
+            z-index: 3;
+        }
+
+        /* ✅ Mobile Responsive */
+        @media screen and (max-width: 768px) {
             table {
-                min-width: 100%;
-                width: 100%;
                 font-size: 14px;
             }
 
@@ -81,34 +81,13 @@
                 white-space: normal;
             }
         }
-
-        /* 🔍 Year Filter */
-        #yearFilter {
-            margin: 15px;
-            padding: 8px;
-            font-size: 16px;
-        }
-
     </style>
 </head>
 <body>
 
-    <!-- 🔥 Notice Bar -->
-    <div id="notice-container">
-        <span id="notice-text">📢 জরুরি নোটিশ: নতুন পয়েন্ট টেবিল আপডেট হয়েছে!</span>
-    </div>
-
-    <!-- 🎯 Year Filter -->
-    <label for="yearFilter">Select Year:</label>
-    <select id="yearFilter" onchange="filterYear()">
-        <option value="2025">2025</option>
-        <option value="2024">2024</option>
-        <option value="2023">2023</option>
-    </select>
-
     <!-- 🏸 Table -->
     <div class="table-container">
-        <h2>UNITEX BADMINTON TOURNAMENT - <span id="selectedYear">2025</span></h2>
+        <h2>UNITEX BADMINTON TOURNAMENT - 2025</h2>
         <h2>POINTS TABLE</h2>
         <table id="pointsTable">
             <thead>
@@ -123,12 +102,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr data-year="2025"><td>1</td><td>MUSTAFIZUR(DIR) + SHAHIN(P)✅</td><td>10</td><td>9</td><td>1</td><td>18</td><td>0.750</td></tr>
-                <tr data-year="2025"><td>2</td><td>SHAHIDUL (M) + OBAIDUL (P)✅</td><td>10</td><td>8</td><td>2</td><td>16</td><td>0.654</td></tr>
-                <tr data-year="2025"><td>3</td><td>SUMON (R) + KALIPODO (R)✅</td><td>10</td><td>7</td><td>3</td><td>14</td><td>0.727</td></tr>
-                <tr data-year="2025"><td>4</td><td>SHAKIB (P) + JAKARIA (D)✅</td><td>10</td><td>7</td><td>3</td><td>14</td><td>0.640</td></tr>
-                <tr data-year="2024"><td>5</td><td>OLD TEAM 1</td><td>10</td><td>6</td><td>4</td><td>12</td><td>0.520</td></tr>
-                <tr data-year="2024"><td>6</td><td>OLD TEAM 2</td><td>10</td><td>5</td><td>5</td><td>10</td><td>0.450</td></tr>
+                <tr><td>1</td><td>MUSTAFIZUR(DIR) + SHAHIN(P)✅</td><td>10</td><td>9</td><td>1</td><td>18</td><td>0.750</td></tr>
+                <tr><td>2</td><td>SHAHIDUL (M) + OBAIDUL (P)✅</td><td>10</td><td>8</td><td>2</td><td>16</td><td>0.654</td></tr>
+                <tr><td>3</td><td>SUMON (R) + KALIPODO (R)✅</td><td>10</td><td>7</td><td>3</td><td>14</td><td>0.727</td></tr>
+                <tr><td>4</td><td>SHAKIB (P) + JAKARIA (D)✅</td><td>10</td><td>7</td><td>3</td><td>14</td><td>0.640</td></tr>
+                <tr><td>5</td><td>RAKIB (R) + SHANTA (E)❌</td><td>10</td><td>7</td><td>3</td><td>14</td><td>0.625</td></tr>
+                <tr><td>6</td><td>RAJU (G) + SAIFUL ISLAM (P)❌</td><td>10</td><td>6</td><td>4</td><td>12</td><td>0.625</td></tr>
+                <tr><td>7</td><td>KAWSER (S) + SAGOR(S)❌</td><td>10</td><td>4</td><td>6</td><td>8</td><td>0.409</td></tr>
+                <tr><td>8</td><td>AMINUL (A) + BELAL (A)❌</td><td>10</td><td>2</td><td>8</td><td>4</td><td>0.333</td></tr>
+                <tr><td>9</td><td>ALIMUL (AC) + ABDUL AWAL (M)❌</td><td>10</td><td>2</td><td>8</td><td>4</td><td>0.320</td></tr>
+                <tr><td>10</td><td>MUSHARRAF (E) + SHAHIN(QC)❌</td><td>10</td><td>2</td><td>8</td><td>4</td><td>0.200</td></tr>
+                <tr><td>11</td><td>MAMUN (E) + EKRAMUL (D)❌</td><td>10</td><td>1</td><td>9</td><td>2</td><td>0.200</td></tr>
             </tbody>
         </table>
     </div>
@@ -155,25 +139,8 @@
             });
         }
 
-        function filterYear() {
-            let selectedYear = document.getElementById("yearFilter").value;
-            document.getElementById("selectedYear").innerText = selectedYear;
-            
-            let rows = document.querySelectorAll("#pointsTable tbody tr");
-            rows.forEach(row => {
-                if (row.getAttribute("data-year") === selectedYear) {
-                    row.style.display = "";
-                } else {
-                    row.style.display = "none";
-                }
-            });
-
-            sortTable();
-        }
-
-        // Initialize Table Sorting
+        // Initialize Sorting
         sortTable();
-        filterYear();
     </script>
 
 </body>
