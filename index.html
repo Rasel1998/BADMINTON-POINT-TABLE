@@ -15,21 +15,22 @@
 
         h2 {
             color: #333;
-            margin-bottom: 5px;
         }
 
-        /* 🏓 Table Container */
-        .table-wrapper {
+        /* 📌 Table Container for Scrolling */
+        .table-container {
             width: 100%;
             overflow-x: auto;
-            position: relative;
             margin-top: 20px;
+            position: relative;
         }
 
+        /* 📌 Table Styling */
         table {
             width: 100%;
             border-collapse: collapse;
             background: #fff;
+            min-width: 600px;
         }
 
         th, td {
@@ -44,51 +45,34 @@
             color: white;
         }
 
-        /* ✅ Fixed First Two Columns (S.N & Team) */
+        /* 🔥 Fixing S.N and Team Column */
         .table-container {
-            display: flex;
+            position: relative;
         }
 
-        .fixed-columns {
-            flex: none;
-            background: #fff;
+        table {
+            border-collapse: collapse;
+        }
+
+        thead th {
             position: sticky;
-            left: 0;
+            top: 0;
             z-index: 2;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
         }
 
-        .scrollable-columns {
-            overflow-x: auto;
-            flex-grow: 1;
-        }
-
-        table .fixed th,
-        table .fixed td {
+        tbody td:first-child,
+        thead th:first-child,
+        tbody td:nth-child(2),
+        thead th:nth-child(2) {
             position: sticky;
             left: 0;
-            background: #fff;
-            z-index: 3;
+            background-color: white;
+            z-index: 2;
         }
 
-        /* ✅ Mobile Responsive */
+        /* ✅ Mobile Responsive Fix */
         @media screen and (max-width: 768px) {
-            .table-container {
-                display: block;
-            }
-            
-            .fixed-columns {
-                width: 100%;
-                display: block;
-            }
-
-            .scrollable-columns {
-                overflow-x: scroll;
-                -webkit-overflow-scrolling: touch;
-            }
-
             table {
-                min-width: 600px;
                 font-size: 14px;
             }
 
@@ -101,63 +85,36 @@
 </head>
 <body>
 
-    <!-- 🏸 Table -->
-    <h2>UNITEX BADMINTON TOURNAMENT - 2025</h2>
-    <h2>POINTS TABLE</h2>
-    
-    <div class="table-wrapper">
-        <div class="table-container">
-            <div class="fixed-columns">
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="fixed">S.N</th>
-                            <th class="fixed">Team</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td class="fixed">1</td><td class="fixed">MUSTAFIZUR(DIR) + SHAHIN(P)✅</td></tr>
-                        <tr><td class="fixed">2</td><td class="fixed">SHAHIDUL (M) + OBAIDUL (P)✅</td></tr>
-                        <tr><td class="fixed">3</td><td class="fixed">SUMON (R) + KALIPODO (R)✅</td></tr>
-                        <tr><td class="fixed">4</td><td class="fixed">SHAKIB (P) + JAKARIA (D)✅</td></tr>
-                        <tr><td class="fixed">5</td><td class="fixed">RAKIB (R) + SHANTA (E)❌</td></tr>
-                        <tr><td class="fixed">6</td><td class="fixed">RAJU (G) + SAIFUL ISLAM (P)❌</td></tr>
-                        <tr><td class="fixed">7</td><td class="fixed">KAWSER (S) + SAGOR(S)❌</td></tr>
-                        <tr><td class="fixed">8</td><td class="fixed">AMINUL (A) + BELAL (A)❌</td></tr>
-                        <tr><td class="fixed">9</td><td class="fixed">ALIMUL (AC) + ABDUL AWAL (M)❌</td></tr>
-                        <tr><td class="fixed">10</td><td class="fixed">MUSHARRAF (E) + SHAHIN(QC)❌</td></tr>
-                        <tr><td class="fixed">11</td><td class="fixed">MAMUN (E) + EKRAMUL (D)❌</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="scrollable-columns">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Matches</th>
-                            <th>Wins</th>
-                            <th>Losses</th>
-                            <th>Points</th>
-                            <th>NSR</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>10</td><td>9</td><td>1</td><td>18</td><td>0.750</td></tr>
-                        <tr><td>10</td><td>8</td><td>2</td><td>16</td><td>0.654</td></tr>
-                        <tr><td>10</td><td>7</td><td>3</td><td>14</td><td>0.727</td></tr>
-                        <tr><td>10</td><td>7</td><td>3</td><td>14</td><td>0.640</td></tr>
-                        <tr><td>10</td><td>7</td><td>3</td><td>14</td><td>0.625</td></tr>
-                        <tr><td>10</td><td>6</td><td>4</td><td>12</td><td>0.625</td></tr>
-                        <tr><td>10</td><td>4</td><td>6</td><td>8</td><td>0.409</td></tr>
-                        <tr><td>10</td><td>2</td><td>8</td><td>4</td><td>0.333</td></tr>
-                        <tr><td>10</td><td>2</td><td>8</td><td>4</td><td>0.320</td></tr>
-                        <tr><td>10</td><td>2</td><td>8</td><td>4</td><td>0.200</td></tr>
-                        <tr><td>10</td><td>1</td><td>9</td><td>2</td><td>0.200</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+    <!-- 🏸 Main Content -->
+    <div class="table-container">
+        <h2>UNITEX BADMINTON TOURNAMENT-2025</h2>
+        <h2>POINTS TABLE</h2>
+        <table id="pointsTable">
+            <thead>
+                <tr>
+                    <th>S.N</th>
+                    <th>Team</th>
+                    <th>Matches</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Points</th>
+                    <th>NSR</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>MUSTAFIZUR(DIR) + SHAHIN(P)✅</td><td>10</td><td>9</td><td>1</td><td>18</td><td>0.750</td></tr>
+                <tr><td>2</td><td>SHAHIDUL (M) + OBAIDUL (P)✅</td><td>10</td><td>8</td><td>2</td><td>16</td><td>0.654</td></tr>
+                <tr><td>3</td><td>SUMON (R) + KALIPODO (R)✅</td><td>10</td><td>7</td><td>3</td><td>14</td><td>0.727</td></tr>
+                <tr><td>4</td><td>SHAKIB (P) + JAKARIA (D)✅</td><td>10</td><td>7</td><td>3</td><td>14</td><td>0.640</td></tr>
+                <tr><td>5</td><td>RAKIB (R) + SHANTA (E)❌</td><td>10</td><td>7</td><td>3</td><td>14</td><td>0.625</td></tr>
+                <tr><td>6</td><td>RAJU (G) + SAIFUL ISLAM (P)❌</td><td>10</td><td>6</td><td>4</td><td>12</td><td>0.625</td></tr>
+                <tr><td>7</td><td>KAWSER (S) + SAGOR(S)❌</td><td>10</td><td>4</td><td>6</td><td>8</td><td>0.409</td></tr>
+                <tr><td>8</td><td>AMINUL (A) + BELAL (A)❌</td><td>10</td><td>2</td><td>8</td><td>4</td><td>0.333</td></tr>
+                <tr><td>9</td><td>ALIMUL (AC) + ABDUL AWAL (M)❌</td><td>10</td><td>2</td><td>8</td><td>4</td><td>0.320</td></tr>
+                <tr><td>10</td><td>MUSHARRAF (E) + SHAHIN(QC)❌</td><td>10</td><td>2</td><td>8</td><td>4</td><td>0.200</td></tr>
+                <tr><td>11</td><td>MAMUN (E) + EKRAMUL (D)❌</td><td>10</td><td>1</td><td>9</td><td>2</td><td>0.200</td></tr>
+            </tbody>
+        </table>
     </div>
 
     <p>Last updated: <b>21 Feb 2025</b></p>
