@@ -72,7 +72,13 @@
 
         /* ✅ Mobile Responsive */
         @media screen and (max-width: 768px) {
+            .table-container {
+                overflow-x: scroll;
+                -webkit-overflow-scrolling: touch;
+            }
+            
             table {
+                min-width: 100%;
                 font-size: 14px;
             }
 
